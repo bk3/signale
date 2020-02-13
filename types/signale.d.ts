@@ -78,7 +78,7 @@ declare namespace _signale {
     interactive?: boolean;
     logLevel?: LogLevel;
     scope?: string;
-    scopeColor?: Function;
+    metaColor?: Function;
     secrets?: Secret;
     stream?: WritableStream | WritableStream[];
     types?: Partial<Record<T, LoggerConfiguration>>;
