@@ -21,6 +21,7 @@ class Signale {
     this._customTypes = Object.assign({}, options.types);
     this._disabled = options.disabled || false;
     this._scopeName = options.scope || '';
+    this._scopeColor = options.scopeColor || '';
     this._timers = options.timers || new Map();
     this._types = this._mergeTypes(defaultTypes, this._customTypes);
     this._stream = options.stream || process.stdout;
@@ -158,12 +159,14 @@ class Signale {
   }
 
   _formatScopeName() {
+    const color = this._scopeColor || grey;
+
     if (Array.isArray(this._scopeName)) {
       const scopes = this._scopeName.filter(x => x.length !== 0);
-      return `${scopes.map(x => `[${x.trim()}]`).join(' ')}`;
+      return color(`${scopes.map(x => `[${x.trim()}]`).join(' ')}`);
     }
 
-    return `[${this._scopeName}]`;
+    return color(`[${this._scopeName}]`);
   }
 
   _formatTimestamp() {
